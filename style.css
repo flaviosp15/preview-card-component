@@ -1,0 +1,257 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #141414;
+}
+
+/* =============== CARDS =============== */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 950px;
+}
+.list-item {
+  display: flex;
+  flex: 1 1 250px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  color: #eee;
+}
+li:first-child .card {
+  background: #f33;
+  border-radius: 10px 0 0 10px;
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  -ms-border-radius: 10px 0 0 10px;
+  -o-border-radius: 10px 0 0 10px;
+}
+li:nth-child(2) .card {
+  background: #063a86;
+}
+li:last-child .card {
+  background: #090;
+  border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 10px 0;
+  -ms-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+}
+.card-detail {
+  width: 2rem;
+  height: 2rem;
+  background: #00000040;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.card-title {
+  text-transform: uppercase;
+}
+.card-text {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  line-height: 1.6;
+}
+.card-link {
+  max-width: max-content;
+  padding: 1rem;
+  border: 2px solid #eee;
+  background: #eee;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+li:first-child .card-link {
+  color: #f33;
+}
+li:nth-child(2) .card-link {
+  color: #063a86;
+}
+li:last-child .card-link {
+  color: #090;
+}
+li .card-link:hover {
+  color: #eee;
+  background: transparent;
+}
+
+/* ================== OVERLAY AND MODAL ================== */
+.overlay {
+  position: fixed;
+  background: #14141480;
+  backdrop-filter: blur(4px);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+}
+.overlay.show {
+  padding: 4rem 1rem;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+}
+.modal {
+  position: relative;
+  pointer-events: auto;
+  padding: 2rem;
+  margin: auto;
+  max-width: 600px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: transform 0.3s linear;
+  -webkit-transition: transform 0.3s linear;
+  -moz-transition: transform 0.3s linear;
+  -ms-transition: transform 0.3s linear;
+  -o-transition: transform 0.3s linear;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+}
+.overlay.show .modal {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+}
+.modal-text {
+  max-height: 300px;
+  overflow-y: auto;
+  font-weight: 700;
+  line-height: 1.7;
+}
+.modal-text::-webkit-scrollbar {
+  display: none;
+}
+/* =============== ARROW ANIMATION =============== */
+.bx-down-arrow-alt {
+  position: absolute;
+  font-size: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  animation: arrowDown 1s infinite forwards;
+  -webkit-animation: arrowDown 1s infinite forwards;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+@keyframes arrowDown {
+  from {
+    top: 30px;
+  }
+  to {
+    top: 38px;
+  }
+}
+
+/* =============== CLOSE ICON =============== */
+.close-icon {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin-left: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.close-icon span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #eee;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.close-icon span:first-child {
+  top: 10px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.close-icon span:last-child {
+  top: 10px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+
+/* =============== MEDIA QUERY =============== */
+@media (max-width: 815px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  .list {
+    flex-direction: column;
+  }
+  li:first-child .card {
+    border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    -ms-border-radius: 10px 10px 0 0;
+    -o-border-radius: 10px 10px 0 0;
+  }
+  li:last-child .card {
+    background: #090;
+    border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    -ms-border-radius: 0 0 10px 10px;
+    -o-border-radius: 0 0 10px 10px;
+  }
+}
